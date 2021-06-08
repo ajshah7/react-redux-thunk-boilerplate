@@ -9,7 +9,7 @@
 ## Installation
 
 ```bash
-git clone hgit clone https://github.com/notrab/create-react-app-redux.git
+git clone https://github.com/ajshah7/react-redux-thunk-boilerplate
 cd create-react-app-redux
 npm install
 
