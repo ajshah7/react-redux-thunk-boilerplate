@@ -7,7 +7,7 @@ const initialState = {
   },
 }
 
-export default (state = initialState, { type, payload }) => {
+const HomePage = (state = initialState, { type, payload }) => {
   switch (type) {
     case GET_NEWS: {
       return {
@@ -32,3 +32,5 @@ export default (state = initialState, { type, payload }) => {
       return state
   }
 }
+
+export default HomePage
