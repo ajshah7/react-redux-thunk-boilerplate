@@ -6,6 +6,16 @@
 
 * Tutorial: [Getting started with create-react-app, Redux, React Router & Redux Thunk](https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f)
 
+
+
+## Check the live website
+
+```bash
+https://react-redux-thunk-boilerplate.netlify.app
+```
+
+
+
 ## Installation
 
 ```bash
