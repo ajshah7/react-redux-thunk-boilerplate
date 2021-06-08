@@ -1,6 +1,7 @@
 {
+  "name":"ajmalshah",
   "private": true,
-  "homepage": "https://create-react-app-redux.now.sh",
+  "homepage": "/",
   "scripts": {
     "deploy": "now && now alias",
     "start": "react-scripts start",
@@ -8,23 +9,28 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "precommit": "pretty-quick --staged"
+    "precommit": "pretty-quick --staged",
+    "plop": "plop"
   },
   "devDependencies": {
-    "prettier": "2.3.1",
-    "react-scripts": "2.1.8"
+    "plop": "^2.7.4",
+    "prettier": "2.3.1"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "connected-react-router": "4.5.0",
-    "react": "16.14.0",
+    "react": "^17.0.2",
     "react-dom": "16.14.0",
     "react-redux": "5.1.2",
-    "react-router": "4.4.0-beta.8",
-    "react-router-dom": "4.4.0-beta.8",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
     "redux": "4.1.0",
     "redux-thunk": "2.3.0",
-    "sanitize.css": "11.0.1",
-    "serve": "10.1.2"
+    "sass": "^1.34.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
+    "serve": "^12.0.0"
   },
   "browserslist": [
     ">0.2%",

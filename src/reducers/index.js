@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import counter from './counter'
+import HomePage from '../containers/HomePage/reducer'
 
 export default combineReducers({
-  counter
+  HomePage,
 })
