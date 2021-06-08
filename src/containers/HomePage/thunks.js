@@ -6,7 +6,9 @@ import axios from 'axios'
 export const getAllNews = () => async (dispatch) => {
   try {
     dispatch(getNews())
-    const response = await axios.get('http://keralanow.herokuapp.com/api/news/')
+    const response = await axios.get(
+      'https://keralanow.herokuapp.com/api/news/'
+    )
     if (response.status === 200) {
       dispatch(
         setNews({
