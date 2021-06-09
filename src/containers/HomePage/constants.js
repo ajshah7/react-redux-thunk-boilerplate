@@ -1,2 +1,2 @@
-export const GET_NEWS = 'counter/GET_NEWS'
-export const SET_NEWS = 'counter/SET_NEWS'
+export const GET_DATA = 'counter/GET_DATA'
+export const SET_DATA = 'counter/SET_DATA'

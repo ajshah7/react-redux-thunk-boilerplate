@@ -1,61 +1,107 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { API_CONSTANTS } from '../../constants'
 import { connect } from 'react-redux'
-import { getAllNews } from './thunks'
-import { Grid, Segment, Loader, Dimmer } from 'semantic-ui-react'
+import { getDataFromApi } from './thunks'
+import {
+  Grid,
+  Segment,
+  Loader,
+  Dimmer,
+  Input,
+  Pagination,
+  Button,
+} from 'semantic-ui-react'
 import './styles.scss'
 
 function HomePage(props) {
+  const [searchQuery, setSearchQuery] = useState('trees')
+  const [page, setPage] = useState(1)
   useEffect(() => {
-    props.getAllNews()
+    props.getDataFromApi({ query: searchQuery, page: page })
   }, [])
 
+  const onChangeSearchInput = (e, { value }) => {
+    setSearchQuery(value)
+  }
+
+  // setting active page
+  const handlePaginationChange = (e, { activePage }) => {
+    setPage(activePage)
+    props.getDataFromApi({ query: searchQuery, page: activePage })
+  }
+
+  const searchImage = () => {
+    props.getDataFromApi({ query: searchQuery, page: page })
+  }
   return (
     <div className="HomePage-container">
-      <h1>News </h1>
-      {props.newsData.status === API_CONSTANTS.loading ? (
+      <div className="header-session">
+        <div className="title">Image Finder </div>
+        <div className="search">
+          <Input
+            onChange={onChangeSearchInput}
+            value={searchQuery}
+            placeholder="Search Images..."
+          />
+          <Button onClick={searchImage}>Search Image</Button>
+        </div>
+      </div>
+
+      {props.data.status === API_CONSTANTS.loading ? (
         <Dimmer active>
           <Loader>Please wait...</Loader>
         </Dimmer>
       ) : null}
-      {props.newsData.status === API_CONSTANTS.success &&
-      props.newsData?.data?.length > 0 ? (
+      {props.data.status === API_CONSTANTS.success &&
+      props.data?.data?.photos?.length > 0 ? (
         <>
           <Grid>
-            {props.newsData?.data?.map((news) => (
-              <Grid.Column width={4}>
-                <Segment>
-                  <img className="news-img" src={news.img} alt="img" />
-                  {news.title}
+            {props.data?.data?.photos?.map((item) => (
+              <Grid.Column computer={4} mobile={16}>
+                <Segment className="cards">
+                  <img className="api-img" src={item.src?.large} alt="img" />
+                  <p>By:{item.photographer}</p>
                 </Segment>
               </Grid.Column>
             ))}
-          </Grid>
-          {/* repeating same news */}
-          <Grid>
-            {props.newsData?.data?.map((news) => (
-              <Grid.Column width={4}>
-                <Segment>
-                  <img className="news-img" src={news.img} alt="img" />
-                  {news.title}
-                </Segment>
-              </Grid.Column>
-            ))}
+            {props.data?.data?.total_results > 40 ? (
+              <div>
+                <Pagination
+                  className="pagination"
+                  boundaryRange={0}
+                  activePage={page}
+                  ellipsisItem={null}
+                  firstItem={1}
+                  onPageChange={handlePaginationChange}
+                  lastItem={parseInt(props.data?.data?.total_results / 40)}
+                  siblingRange={1}
+                  totalPages={parseInt(props.data?.data?.total_results / 40)}
+                />
+              </div>
+            ) : null}
           </Grid>
         </>
       ) : (
-        'no news found'
+        <div className="no-image">
+          {' '}
+          <img
+            className="err-img"
+            src="https://image.freepik.com/free-vector/no-data-concept-illustration_114360-695.jpg"
+            alt="no data"
+          />{' '}
+          <br /> no images found{' '}
+        </div>
       )}
     </div>
   )
 }
 
 const mapStateToProps = (state) => ({
-  newsData: state.HomePage.newsData,
+  data: state.HomePage.data,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getAllNews: () => dispatch(getAllNews()),
+  getDataFromApi: (data) => dispatch(getDataFromApi(data)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
