@@ -89,7 +89,7 @@ function HomePage(props) {
             src="https://image.freepik.com/free-vector/no-data-concept-illustration_114360-695.jpg"
             alt="no data"
           />{' '}
-          <br /> no images found{' '}
+          <br /> No images found!{' '}
         </div>
       )}
     </div>
