@@ -1,10 +1,10 @@
-import { GET_NEWS, SET_NEWS } from './constants'
+import { GET_DATA, SET_DATA } from './constants'
 
-export const getNews = () => ({
-  type: GET_NEWS,
+export const getData = () => ({
+  type: GET_DATA,
 })
 
-export const setNews = (data) => ({
-  type: SET_NEWS,
+export const setData = (data) => ({
+  type: SET_DATA,
   payload: data,
 })

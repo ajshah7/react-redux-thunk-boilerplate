@@ -1,6 +1,90 @@
 .HomePage-container {
-  margin-top: 3rem;
-  .news-img {
-    width: 100%;
+  .header-session {
+    @media only screen and (min-width: 600px) {
+      display: flex;
+      margin-bottom: 50px;
+    }
+
+    .title {
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
+      color: white;
+      font-size: 48px;
+    }
+
+    .search {
+      @media only screen and (max-width: 600px) {
+        margin-left: -3rem;
+        margin-bottom: 50px;
+      }
+      display: flex;
+
+      @media only screen and (max-width: 600px) {
+        input {
+          height: 48px;
+          margin: 30px 0 0 40px !important;
+        }
+        button {
+          height: 48px;
+          margin: 30px 0 0 20px !important;
+        }
+      }
+      @media only screen and (min-width: 600px) {
+        input {
+          height: 48px;
+          margin: -10px 0 0 40px !important;
+        }
+        button {
+          height: 48px;
+          margin: -10px 0 0 20px !important;
+        }
+      }
+    }
+  }
+
+  .cards {
+    height: 300px;
+    background-color: rgb(36, 36, 36) !important;
+    color: white;
+    p {
+      margin-top: 5px;
+    }
+    .api-img {
+      object-fit: cover;
+      width: 100%;
+      height: 95%;
+      transform: scale(0.98);
+    }
+    .api-img:hover {
+      transform: scale(1);
+    }
+    @media only screen and (min-width: 600px) {
+      margin-bottom: 20px !important;
+    }
+  }
+  .pagination {
+    // float: right !important;
+    position: absolute;
+    right: 0 !important;
+    margin: -25px 3rem 0 0 !important ;
+  }
+  .no-image {
+    height: 100vh;
+    text-align: center;
+    color: white;
+    margin-top: 100px;
+    .err-img {
+      border-radius: 40px;
+      object-fit: cover;
+      @media only screen and (min-width: 600px) {
+        width: 30%;
+        height: 40%;
+      }
+      @media only screen and (max-width: 600px) {
+        width: 90%;
+        height: 40%;
+      }
+    }
   }
 }
